@@ -1,9 +1,12 @@
 <?php
 
-use App\Database\Connect;
+use App\Models\UserModel;
 
 require_once __DIR__  . '/vendor/autoload.php';
 
-$connect = Connect::getInstance();
+$model = new UserModel();
+$user = $model->load('1');
 
-dd($connect->query('SELECT * FROM users')->fetchAll());
+
+dd($user);
+//dd($user->load('1', "{$user->first_name}"));
