@@ -3,40 +3,41 @@
 namespace App\Models;
 
 use App\Database\Connect;
+use PDOException;
 
 abstract class Model
 {
     protected ?object $data;
-    protected \PDOException $fail;
+    protected $fail;
     protected ?string $message;
 
     public function __set(string $name, string $value)
     {
-        dd($this->data);
-//        if (empty($this->data)) {
-//
-//        }
-//
-//        $this->data->$name = $value;
+        if (empty($this->data)) {
+            $this->data = new \stdClass();
+        }
+
+        $this->data->$name = $value;
     }
 
-//    public function __get(string $name)
-//    {
-//        return ($this->data->$name ?? null);
-//    }
-//
-//    public function __isset(string $name): bool
-//    {
-//       return isset($this->data->$name);
-//    }
+    public function __get(string $name)
+    {
+        return ($this->data->$name ?? null);
+    }
+
+    public function __isset(string $name): bool
+    {
+       return isset($this->data->$name);
+    }
 
     protected function data(): ?object
     {
         return $this->data;
     }
 
-    protected function fail(): \PDOException
+    protected function fail()
     {
+        dd($this->fail);
         return $this->fail;
     }
 
@@ -58,6 +59,7 @@ abstract class Model
                 parse_str($params, $valuesArr);
                 foreach ($valuesArr as $key => $value) {
                     $type = (is_numeric($value) ? \PDO::PARAM_INT : \PDO::PARAM_STR);
+                    dd($type);
                     $stmt->bindValue(":{$key}", $value, $type);
                 }
             }
