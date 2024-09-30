@@ -1,0 +1,23 @@
+{
+    "name": "allanrodrigues/study-php",
+    "description": "Project Study",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Allan Rodrigues"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^2.9",
+        "symfony/debug": "^4.4"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.0"
+    }
+}
