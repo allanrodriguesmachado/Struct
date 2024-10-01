@@ -1,3 +1,6 @@
 let mix = require('laravel-mix');
 
-mix.postCss('')
+mix.setPublicPath('public')
+mix.version()
+
+mix.css('resources/css/app.css', 'public/css')
