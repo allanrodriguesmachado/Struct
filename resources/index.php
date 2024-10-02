@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include __DIR__ . '/includes/head.php'; ?>
+    <?php include __DIR__ . '/views/partials/head.php'; ?>
 </head>
 <body>
 
@@ -40,6 +40,8 @@
             My main content here
         </div>
     </main>
+
+    <?= include_once __DIR__ . '/views/partials/footer.php' ?>
 </div>
 </body>
 </html>
