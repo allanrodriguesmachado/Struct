@@ -6,3 +6,9 @@ if (! function_exists('mix')) {
         return json_decode($content, true)[$path];
     }
 }
+
+if (! function_exists('resource_path')) {
+    function resource_path(string $path): string {
+        return include __DIR__ . '/../resources' . DIRECTORY_SEPARATOR . $path;
+    }
+}
